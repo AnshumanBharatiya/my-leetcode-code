@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <script>
+
+
+
+
+
+
+
+
+
+        // QS - 1
+         // LEET CODE Day - 1;
+        // function twoSum(nums, target) {
+        //     // // applied for order array
+        //     // let left = 0;
+        //     // let right = nums.length - 1;
+        //     // while(left < right){
+        //     //     let total = nums[left] + nums[right];
+        //     //     if( total === target){
+        //     //         return [left, right];
+        //     //     }else if(total < target){
+        //     //         left++;
+        //     //     }else{
+        //     //         right--;
+        //     //     }
+        //     // }
+        //     // applied for order array and unordered array 
+        //     for (let i = 0; i < nums.length; i++) {
+        //         for (let j = i + 1; j < nums.length; j++) {
+        //             if (nums[i] + nums[j] === target) {
+        //                 return [i, j]
+        //             }
+        //         }
+        //     }
+        // };
+        // console.log(twoSum([3,2,4], 6));
+
+        // Better solution from leet code
+        // var twoSum = function(nums, target) {
+        //     //base
+        //     if(nums.length===2)return [0,1];
+        //     let memo = {};
+        //     for(let i=0; i<nums.length; i++){
+        //         let num2 = target - nums[i];
+        //         if(memo[num2] !== undefined){
+        //             return [memo[num2], i]
+        //         }
+        //         memo[nums[i]] = i;
+        //     }
+        // };
+
+
+        // QS - 2
+        // function isPalindrome(x) {
+        //     if(x < 0) return false;
+        //     let str = x.toString();
+        //     function helper(rcvStr){
+        //         if(rcvStr.length === 0) return rcvStr;
+        //         return helper(rcvStr.slice(1)) + rcvStr[0];
+        //     }
+        //     let newStr = helper(str);
+        //     if(newStr == str){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // };
+        // console.log(isPalindrome(-121));
+
+
+        // QS - 3
+        // function romanToInt(s){
+        //     let str = s.toUpperCase();
+        //     let romanObj = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000};
+        //     if(str.length === 0) return 0;
+        //     if(str.length === 1) return romanObj[str[0]];
+        //     let total = 0;
+        //     for(let i = 0; i<str.length; i++){
+        //       var a = romanObj[str.charAt(i)];
+        //       if(i+1 < str.length){
+        //         var b = romanObj[str.charAt(i + 1)];
+        //         if(a >= b){
+        //             total = total + a
+        //         }else{
+        //             total = total + b - a;
+        //             i++;
+        //         }
+        //       }else{
+        //         total = total + a;
+        //       }
+        //     }
+        //     return total;
+        // }
+
+
+        // // Better solution from leet code
+        // var romanToInt = function(str) {
+        //     var hashTable = {
+        //         'I': 1,
+        //         'V': 5,
+        //         'X': 10,
+        //         'L': 50,
+        //         'C': 100,
+        //         'D': 500,
+        //         'M': 1000
+        //     };
+        //     var num = 0;
+        //     for (let i = 0; i < str.length; i += 1) {
+        //         if (hashTable[str[i]] < hashTable[str[i + 1]]) {
+        //             num += (hashTable[str[i + 1]] - hashTable[str[i]]);
+        //             i += 1;
+        //             continue;
+        //         }
+        //         num += hashTable[str[i]];
+        //     }
+
+        //     return num;
+        // };
+        // console.log(romanToInt("LVIII"));
+
+
+        // QS - 4
+        // function strStr(haystack, needle){
+        //     // if(needle.length === 0) return -1;
+        //     // if(needle.length > haystack.length) return -1;
+        //     return haystack.indexOf(needle);    
+        // }
+        // console.log(strStr("leetcode", "leeto"));
+
+
+        // QS - 5
+        // function plusOne(digits){
+        //         let digiStr =  digits.toString().replaceAll(',','');
+        //         let nu =  BigInt(digiStr);
+        //         let vat = nu + BigInt(1);
+        //         return String(vat).split('').map(Number);
+        // }
+
+        //     // Better Solution
+        //     var plusOne = function(digits) {
+        //         return (BigInt(digits.join("")) + BigInt(1)).toString().split("")
+        //     };
+
+        // console.log(plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]));
+
+
+        // QS - 6
+        // function removeDuplicates(nums){
+        //     let start = 0;
+        //     let next = 1;
+        //     while(next <= nums.length){
+        //     if(nums[start] !== nums[next]){
+        //         start++;
+        //         next++;     
+        //         }else{
+        //             nums.splice(start,1);
+        //         }
+        //     }
+        //     return nums;
+        //     // let arrayUniq =  new Set(nums);
+        //     // return arrayUniq.size;
+        // }
+
+        // //  Some Better Solutions
+        // function removeDuplicates(nums){
+        //     let i = 0;
+        //     for (let j = 1; j < nums.length; j++) {
+        //         if (nums[j] != nums[i]) 
+        //             nums[++i] = nums[j];
+        //     }
+        //     return ++i;
+        // }
+
+
+        // function removeDuplicates(nums){
+        //     if(nums.length==0 ){
+        //         return 0;
+        //     }
+        //     let c=1;
+        //     for (let i=0;i < nums.length-1 ;i++){
+        //         if(nums[i]<nums[i+1]){
+        //             nums[c]=nums[i+1];
+        //             c++
+        //         }
+        //     }
+        //     return c;
+        // }
+        // console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+    </script>
+    
+</body>
+</html>
